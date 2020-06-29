@@ -1,0 +1,81 @@
+* {
+    margin: 0;
+    padding: 0;
+  }
+  
+  $color-primary: #f9ed69; //yellow
+  $color-secondary: #f09101; //orange
+  $color-thirtiary: #f001a0; //pink
+  $color-dark: #333; //dark
+  $color-light: #eee; //dark
+  
+  $width-button: 130px;
+  
+  @mixin clearfix {
+    &::after {
+      content: "";
+      clear: both;
+      display: table;
+    }
+  }
+  
+  @mixin style-link-text($col) {
+    text-decoration: none;
+    text-transform: uppercase;
+    color: $col;
+  }
+  nav {
+    margin: 30px;
+    background-color: $color-secondary;
+    @include clearfix;
+  }
+  .navigation {
+    list-style: none;
+    float: left;
+  
+    li {
+      display: inline-block;
+      margin-left: 30px;
+  
+      &:first-child {
+        margin: 0px;
+      }
+      a {
+        @include style-link-text($color-light);
+      }
+    }
+  }
+  
+  .buttons {
+    float: right;
+  }
+  
+  %btn-placeholder {
+    padding: 10px;
+    display: inline-block;
+    text-align: center;
+    border-radius: 100px;
+    width: $width-button;
+    @include style-link-text($color-dark);
+  }
+  
+  .btn-main {
+    &:link {
+      @extend %btn-placeholder;
+      background-color: $color-primary;
+    }
+    &:hover {
+      background-color: darken($color-primary, 15%);
+    }
+  }
+  
+  .btn-hot {
+    &:link {
+      @extend %btn-placeholder;
+      background-color: $color-thirtiary;
+    }
+    &:hover {
+      background-color: lighten($color-thirtiary, 15%);
+    }
+  }
+  
